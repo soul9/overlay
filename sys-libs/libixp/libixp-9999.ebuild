@@ -4,7 +4,7 @@
 
 : ${EHG_REPO_URI:=${LIBIXP_HG_REPO_URI:-http://code.suckless.org/hg/libixp}}
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="live development version of libixp"
 SRC_URI=""
