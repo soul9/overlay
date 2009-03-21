@@ -4,7 +4,7 @@
 
 : ${EHG_REPO_URI:=${LIBIXP_HG_REPO_URI:-http://code.suckless.org/hg/libixp}}
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic eutils distutils mercurial
 
 DESCRIPTION="live development version of libixp"
 SRC_URI=""
@@ -12,7 +12,7 @@ HOMEPAGE="http://libs.suckless.org/libixp"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="MIT"
 IUSE=""
 
 S="${WORKDIR}/${EHG_REPO_URI##*/}/libixp"
@@ -23,21 +23,6 @@ src_unpack() {
 
 	cd "${S}"
 
-	# apply local patches
-	if test -n "${LIBIXP_LOCAL_PATCHES}";
-	then
-		ewarn "Applying local patches:"
-		for LOCALPATCH in ${DVB_LOCAL_PATCHES};
-		do
-			if test -f "${LOCALPATCH}";
-			then
-				epatch "${LOCALPATCH}"
-			fi
-		done
-	else
-		einfo "No additional local patches to use"
-	fi
-	
     sed -i \
            -e "/^PREFIX/s|=.*|= ${D}/usr|" \
            -e "/^ETC/s|=.*|= ${D}/etc|" \
