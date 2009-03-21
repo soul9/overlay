@@ -4,7 +4,7 @@
 
 : ${EHG_REPO_URI:=${LIBIXP_HG_REPO_URI:-http://code.suckless.org/hg/libixp}}
 
-inherit toolchain-funcs flag-o-matic eutils distutils mercurial
+inherit toolchain-funcs mercurial
 
 DESCRIPTION="live development version of libixp"
 SRC_URI=""
