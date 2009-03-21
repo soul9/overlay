@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-dvb-hg/v4l-dvb-hg-0.1-r2.ebuild,v 1.15 2008/05/21 13:30:44 zzam Exp $
 
-: ${EHG_REPO_URI:=${V4L_DVB_HG_REPO_URI:-http://linuxtv.org/hg/v4l-dvb}}
+: ${EHG_REPO_URI:=${LIBIXP_HG_REPO_URI:-http://code.suckless.org/hg/libixp}}
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="live development version of libixp"
 SRC_URI=""
-HOMEPAGE="http://"
+HOMEPAGE="http://libs.suckless.org/libixp"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
@@ -31,11 +31,6 @@ src_unpack() {
 		do
 			if test -f "${LOCALPATCH}";
 			then
-				if grep -q linux/drivers "${LOCALPATCH}"; then
-					cd "${S}"/..
-				else
-					cd "${S}"
-				fi
 				epatch "${LOCALPATCH}"
 			fi
 		done
