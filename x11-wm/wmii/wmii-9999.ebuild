@@ -20,7 +20,8 @@ DEPEND=">=sys-libs/libixp-9999
 RDEPEND="${DEPEND}
 	x11-apps/xmessage
 	x11-apps/xsetroot
-	=x11-misc/dmenu-9999"
+	=x11-misc/dmenu-9999
+	app-text/txt2tags"
 
 S="${WORKDIR}/wmii"
 
@@ -36,6 +37,7 @@ src_unpack() {
 		-e "/^PREFIX/s|=.*|= ${D}/usr|" \
 		-e "/^ETC/s|=.*|= ${D}/etc|" \
 		-e "/^LIBDIR/s|=.*|= /usr/$(get_libdir)|" \
+		-e "/^LIBIXP/s|=.*|= /usr/lib/libixp.a|"
 		config.mk || die "sed failed"
 }
 
