@@ -15,7 +15,7 @@ SLOT="0"
 LICENSE="MIT"
 IUSE=""
 
-S="${WORKDIR}/${EHG_REPO_URI##*/}/libixp"
+S="${WORKDIR}/libixp"
 
 src_unpack() {
 	# download and copy files
