@@ -43,6 +43,9 @@ src_unpack() {
 
 src_compile() {
 	emake -j1 || die "emake failed"
+	for f in usr/bin/wihack usr/bin/wmiistartrc usr/share/man/man1/wmii.1; do
+        sed -e "s,/var/tmp/paludis/x11-wm-wmii-9999,,g" $f
+    done
 }
 
 src_install() {
