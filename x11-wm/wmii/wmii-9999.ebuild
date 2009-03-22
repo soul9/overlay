@@ -34,11 +34,12 @@ src_unpack() {
 		rc/{rc.wmii.rc,sh.wmii,wmiirc.sh} || die "sed failed"
 
 	sed -i \
-		-e "/^PREFIX/s|=.*|= ${D}/usr|" \
-		-e "/^ETC/s|=.*|= ${D}/etc|" \
+		-e "/^PREFIX/s|=.*|= /usr|" \
+		-e "/^ETC/s|=.*|= /etc|" \
 		-e "/^LIBDIR/s|=.*|= /usr/$(get_libdir)|" \
 		-e "/^LIBIXP/s|=.*|= /usr/lib/libixp.a|" \
 		config.mk || die "sed failed"
+
 }
 
 src_compile() {
@@ -47,12 +48,14 @@ src_compile() {
 
 src_install() {
 	emake -j1 DESTDIR="${D}" install || die "emake install failed"
-	dodoc NOTES README TODO
 
 	# Rid paths of temporary install directory. (bug #199551)
 	for f in usr/bin/wihack usr/bin/wmiistartrc usr/share/man/man1/wmii.1; do
         sed -i -e "s,${D},,g" ${D}/$f
     done
+    ls ${D}
+
+	dodoc NOTES README TODO
 
 	echo -e "#!/bin/sh\n/usr/bin/wmii" > "${T}/${PN}"
 	exeinto /etc/X11/Sessions
