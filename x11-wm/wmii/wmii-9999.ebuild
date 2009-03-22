@@ -37,7 +37,7 @@ src_unpack() {
 		-e "/^PREFIX/s|=.*|= ${D}/usr|" \
 		-e "/^ETC/s|=.*|= ${D}/etc|" \
 		-e "/^LIBDIR/s|=.*|= /usr/$(get_libdir)|" \
-		-e "/^LIBIXP/s|=.*|= /usr/lib/libixp.a|"
+		-e "/^LIBIXP/s|=.*|= /usr/lib/libixp.a|" \
 		config.mk || die "sed failed"
 }
 
