@@ -43,9 +43,6 @@ src_unpack() {
 
 src_compile() {
 	emake -j1 || die "emake failed"
-	for f in usr/bin/wihack usr/bin/wmiistartrc usr/share/man/man1/wmii.1; do
-        sed -e "s,/var/tmp/paludis/x11-wm-wmii-9999,,g" $f
-    done
 }
 
 src_install() {
@@ -53,7 +50,9 @@ src_install() {
 	dodoc NOTES README TODO
 
 	# Rid paths of temporary install directory. (bug #199551)
-#	sed -i -e "s|${D}||g" "${D}/usr/bin/wmiistartrc"
+	for f in usr/bin/wihack usr/bin/wmiistartrc usr/share/man/man1/wmii.1; do
+        sed -i -e "s,${D},,g" ${D}/$f
+    done
 
 	echo -e "#!/bin/sh\n/usr/bin/wmii" > "${T}/${PN}"
 	exeinto /etc/X11/Sessions
