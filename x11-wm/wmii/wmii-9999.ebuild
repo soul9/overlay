@@ -50,12 +50,9 @@ src_install() {
 	dodoc NOTES README TODO
 
 	# Rid paths of temporary install directory. (bug #199551)
-	sed -i -e "s|${D}||g" "${D}/usr/bin/wmiistartrc"
+#	sed -i -e "s|${D}||g" "${D}/usr/bin/wmiistartrc"
 
 	echo -e "#!/bin/sh\n/usr/bin/wmii" > "${T}/${PN}"
 	exeinto /etc/X11/Sessions
 	doexe "${T}/${PN}"
-
-	insinto /usr/share/xsessions
-	doins "${FILESDIR}/${PN}.desktop"
 }
