@@ -34,7 +34,7 @@ src_unpack() {
 		rc/{rc.wmii.rc,sh.wmii,wmiirc.sh} || die "sed failed"
 
 	sed -i \
-	    -e "s,/usr/etc,/etc,g" \
+	    -e "s,/usr/local/etc,/etc,g" \
 		-e "s,/usr/local,/usr,g" \
 		-e "/^ETC/s|=.*|= /etc|" \
 		-e "/^LIBDIR/s|=.*|= /usr/$(get_libdir)|" \
