@@ -7,6 +7,7 @@ inherit distutils
 
 MY_PN="CouchDB"
 MY_P="${MY_PN}-${PV}"
+P=${MY_P}
 
 DESCRIPTION="Python library for working with CouchDB"
 HOMEPAGE="http://code.google.com/p/couchdb-python/"
