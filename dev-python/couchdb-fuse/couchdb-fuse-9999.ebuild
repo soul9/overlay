@@ -16,3 +16,5 @@ KEYWORDS="~x86"
 SLOT="0"
 IUSE=""
 
+DEPEND="dev-python/fuse-python
+        dev-python/couchdb"
