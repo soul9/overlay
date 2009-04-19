@@ -14,4 +14,4 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-python/fuse-python
-        dev-python/couchdb-0.5"
+        =dev-python/couchdb-0.5"
