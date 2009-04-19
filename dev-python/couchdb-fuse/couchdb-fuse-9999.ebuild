@@ -5,9 +5,6 @@
 
 inherit distutils
 
-MY_PN="CouchDB-FUSE"
-MY_P="${MY_PN}-${MY_PV}"
-
 DESCRIPTION="CouchDB FUSE module"
 HOMEPAGE="http://code.google.com/p/couchdb-fuse/"
 ESVN_REPO_URI="http://couchdb-fuse.googlecode.com/svn/trunk/"
