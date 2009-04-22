@@ -19,12 +19,6 @@ DEPEND="${RDEPEND}
 	hardened? ( sys-apps/paxctl )
 	"
 
-src_unpack() {
-#	unpack ${A}
-	cd "${S}"
-	find -type d -name .svn -exec rm -rf {} \; &>/dev/null
-}
-
 src_compile() {
 	export INFERNO_ROOT=$(pwd)
 	perl -i -pe 's/^ROOT=.*/ROOT=$ENV{INFERNO_ROOT}/m' mkconfig
