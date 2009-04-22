@@ -23,9 +23,6 @@ src_unpack() {
 #	unpack ${A}
 	cd "${S}"
 	find -type d -name .svn -exec rm -rf {} \; &>/dev/null
-
-	epatch "${FILESDIR}/issue-122-csendalt.patch"
-	epatch "${FILESDIR}/issue-147-wait.patch"
 }
 
 src_compile() {
