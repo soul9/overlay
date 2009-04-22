@@ -30,8 +30,6 @@ src_compile() {
 	mk nuke					|| die
 	if use X; then
 		mk install			|| die
-	else
-		perl -i -pe 's/^(SYSLIBS=.*) -lX11 -lXext/$1/m' emu/Linux/mkfile || die
 	fi
 	mk CONF=emu-g install	|| die
 
