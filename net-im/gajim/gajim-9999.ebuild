@@ -52,6 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+    ./autogen.sh
 	eautoreconf
 }
 
