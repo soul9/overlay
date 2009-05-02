@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 ~hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml"
 
 DEPEND="|| (
-		( <dev-lang/python-2.5 dev-python/pysqlite )
+		( >=dev-lang/python-2.4 dev-python/pysqlite )
 		>=dev-lang/python-2.5[sqlite]
 	)
 	dev-python/pygtk
