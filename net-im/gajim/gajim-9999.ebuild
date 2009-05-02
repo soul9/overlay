@@ -8,7 +8,7 @@ inherit multilib python eutils autotools subversion
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="http://www.gajim.org/"
-ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk
+ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
