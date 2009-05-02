@@ -53,11 +53,6 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack "${A}"
-	cd "${S}"
-}
-
 src_configure() {
 	local myconf
 
