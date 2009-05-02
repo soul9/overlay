@@ -1,21 +1,22 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.11.4.ebuild,v 1.7 2009/03/07 19:57:16 gentoofan23 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/gajim-0.12.1.ebuild,v 1.2 2009/04/28 15:00:04 jer Exp $
 
 EAPI="2"
-inherit multilib python eutils subversion
+
+inherit multilib python eutils autotools subversion
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="http://www.gajim.org/"
-ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk"
+ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml"
 
 DEPEND="|| (
-		( >=dev-lang/python-2.4 dev-python/pysqlite )
+		( <dev-lang/python-2.5 dev-python/pysqlite )
 		>=dev-lang/python-2.5[sqlite]
 	)
 	dev-python/pygtk
@@ -33,7 +34,9 @@ RDEPEND="gnome? ( dev-python/gnome-python-extras
 	idle? ( x11-libs/libXScrnSaver )
 	spell? ( app-text/gtkspell )
 	avahi? ( net-dns/avahi[dbus,gtk,python] )
-	dev-python/pyopenssl"
+	dev-python/pyopenssl
+	dev-python/sexy-python
+	dev-python/pycrypto"
 
 pkg_setup() {
 	if ! use dbus; then
@@ -45,12 +48,11 @@ pkg_setup() {
 			eerror "The dbus USE flag is required for avahi support"
 			die "USE=\"dbus\" needed for avahi support"
 		fi
-	else
-		if has_version "<sys-apps/dbus-0.90" && ! built_with_use sys-apps/dbus python; then
-				eerror "Please rebuild dbus with USE=\"python\""
-				die "USE=\"python\" needed for dbus"
-		fi
 	fi
+}
+
+src_prepare() {
+	eautoreconf
 }
 
 src_configure() {
@@ -66,9 +68,8 @@ src_configure() {
 		$(use_enable dbus remote) \
 		$(use_with X x) \
 		--docdir="/usr/share/doc/${PF}" \
-		--prefix="/usr" \
-		--libdir="/usr/$(get_libdir)" \
-		${myconf}
+		--libdir="$(python_get_sitedir)" \
+		${myconf} || die "econf failed"
 }
 
 src_install() {
@@ -79,9 +80,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize /usr/share/gajim/
+	python_mod_optimize $(python_get_sitedir)/gajim/
 }
 
 pkg_postrm() {
-	python_mod_cleanup /usr/share/gajim/
+	python_mod_cleanup $(python_get_sitedir)/gajim/
 }
