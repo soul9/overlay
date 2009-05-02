@@ -4,11 +4,11 @@
 
 EAPI="2"
 
-inherit multilib python eutils autotools subversion
+inherit multilib python eutils autotools
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="http://www.gajim.org/"
-ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk
+SRC_URI="http://www.gajim.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -52,6 +52,20 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# bug #251466 move *.py out of /usr/share
+	# upstream: (http://trac.gajim.org/ticket/4770)
+	epatch "${FILESDIR}/fix_autotools_and_search_dirs.patch"
+	# not upstream:
+	epatch "${FILESDIR}/0.12.1_autotools_install_pyfiles_in_pkglibdir.patch"
+	# sound paths:
+	epatch "${FILESDIR}/0.12.1-sound-path-fix.patch"
+	# small fix from upstream
+	epatch "${FILESDIR}/0.12.1-roster_window.py_r10934.patch"
+
+	# fix datadir path (trunk use an env var for config this)
+	sed -i "s|'DATA',.*|'DATA', '/usr/share/gajim/data')|" \
+		   "src/common/configpaths.py" || die 'sed failed'
+
 	eautoreconf
 }
 
