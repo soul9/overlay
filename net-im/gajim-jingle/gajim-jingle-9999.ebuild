@@ -50,6 +50,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+    cd ${WORKDIR}
     hg update jingle
     ./autogen.sh
 	eautoreconf
