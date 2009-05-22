@@ -50,8 +50,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-    cd ${WORKDIR}
-    hg update jingle
+    cd gajim
+    hg pull -u -r jingle /usr/portage/distfiles/hg-src/gajim-jingle/gajim
     ./autogen.sh
 	eautoreconf
 }
