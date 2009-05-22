@@ -57,6 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
+    cd gajim
 	local myconf
 
 	if ! use gnome; then
