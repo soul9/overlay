@@ -77,6 +77,7 @@ src_configure() {
 }
 
 src_install() {
+    cd gajim
 	emake DESTDIR="${D}" install || die "emake install failed"
 
 	rm "${D}/usr/share/doc/${PF}/README.html"
