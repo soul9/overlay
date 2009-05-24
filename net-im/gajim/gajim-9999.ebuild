@@ -52,6 +52,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+    #why do we have to do this?
+    cd gajim
     ./autogen.sh
 	eautoreconf
 }
