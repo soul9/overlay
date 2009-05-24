@@ -4,11 +4,11 @@
 
 EAPI="2"
 
-inherit multilib python eutils autotools subversion
+inherit multilib python eutils autotools mercurial
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="http://www.gajim.org/"
-ESVN_REPO_URI="svn://svn.gajim.org/gajim/trunk"
+EHG_REPO_URI="http://hg.gajim.org/gajim"
 
 LICENSE="GPL-2"
 SLOT="0"
