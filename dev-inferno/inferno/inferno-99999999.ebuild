@@ -90,7 +90,7 @@ src_install() {
 
 pkg_postinst() {
 	# Unpack man pages (packed by doins)
-	find "${ROOT}"/usr/inferno/man/ -name '*.bz2' -exec bzip2 -f -d {} \;
+	find "${ROOT}"/usr/inferno/man/ -name '*.bz2' -exec bunzip {} \;
 }
 
 pkg_prerm() {
