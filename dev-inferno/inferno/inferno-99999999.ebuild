@@ -55,6 +55,7 @@ src_compile() {
         svn co http://acme-sac.googlecode.com/svn/trunk/fonts/vera --config-dir ./ vera
         cd ..
     fi
+    epatch ${FILESDIR}/acme-fonts-wmsetup.patch
 }
 
 src_install() {
