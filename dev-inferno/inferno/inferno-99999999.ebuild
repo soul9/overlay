@@ -40,6 +40,21 @@ src_compile() {
 	# needed to allow rebuilding already installed inferno (with "use source")
 	export INFERNO_ROOT="/usr/inferno"
 	perl -i -pe 's/^ROOT=.*/ROOT=$ENV{INFERNO_ROOT}/m' mkconfig
+
+    if [ -d fonts/10646/.svn ]; then
+        cd fonts/10646 && svn up && cd ../..
+    else
+        cd fonts
+        svn co http://acme-sac.googlecode.com/svn/trunk/fonts/10646 --config-dir ./ 10646
+        cd ..
+    fi
+    if [ -d fonts/vera/.svn ]; then
+        cd fonts/vera && svn up && cd ../..
+    else
+        cd fonts
+        svn co http://acme-sac.googlecode.com/svn/trunk/fonts/vera --config-dir ./ vera
+        cd ..
+    fi
 }
 
 src_install() {
