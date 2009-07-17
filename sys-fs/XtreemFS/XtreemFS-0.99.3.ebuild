@@ -24,8 +24,12 @@ src_install() {
     doinitd "${FILESDIR}"/init/xtreemfs-mrc
     doinitd "${FILESDIR}"/init/xtreemfs-osd
     doman "${S}"/man/man1/*
+    dodir /var/log/xtreemfs/
+    enewuser xtreemfs -1 /var/lib/xtreemfs
+    fowners root:xtreemfs /var/log/xtreemfs
+    fperms 772 /var/log/xtreemfs
 }
 
-pkg_postinst() {
-    enewuser xtreemfs -1 /var/lib/xtreemfs
+pkg_postrm() {
+    userdel xtreemfs
 }
