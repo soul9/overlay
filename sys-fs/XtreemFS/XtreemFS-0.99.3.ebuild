@@ -25,3 +25,7 @@ src_install() {
     doinitd "${FILESDIR}"/init/xtreemfs-osd
     doman "${S}"/man/man1/*
 }
+
+pkg_postinst() {
+    enewuser xtreemfs -1 /var/lib/xtreemfs
+}
