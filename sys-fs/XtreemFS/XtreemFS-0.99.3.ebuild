@@ -6,7 +6,9 @@ SLOT="0"
 SRC_URI="http://xtreemfs.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-RDEPEND=">=virtual/jdk-1.6.0"
+RDEPEND=">=virtual/jdk-1.6.0
+         sys-fs/e2fsprogs
+         sys-apps/attr"
 DEPEND="${RDEPEND}"
 
 
@@ -34,7 +36,7 @@ src_install() {
 
 pkg_preinst() {
     dodir /var/log/xtreemfs/
-    enewuser xtreemfs -1 /var/lib/xtreemfs
+    enewuser xtreemfs -1 /bin/false /var/lib/xtreemfs
     fowners root:xtreemfs /var/log/xtreemfs
     fperms 772 /var/log/xtreemfs
 }
