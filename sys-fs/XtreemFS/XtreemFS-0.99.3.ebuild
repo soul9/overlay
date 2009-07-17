@@ -8,7 +8,8 @@ LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
 RDEPEND=">=virtual/jdk-1.6.0
          sys-fs/e2fsprogs
-         sys-apps/attr"
+         sys-apps/attr
+         app-admin/killproc"
 DEPEND="${RDEPEND}"
 
 
