@@ -26,6 +26,8 @@ src_install() {
     doinitd "${FILESDIR}"/init/xtreemfs-osd
     doman "${S}"/man/man1/*
 
+    insinto  /
+    dodir /etc/xos
     java-pkg_dojar src/servers/dist/XtreemFS.jar src/servers/lib/BabuDB-0.1.0-RC.jar
 }
 
