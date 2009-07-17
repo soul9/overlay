@@ -37,7 +37,7 @@ src_install() {
 
 pkg_preinst() {
     dodir /var/log/xtreemfs/
-    enewuser xtreemfs -1 /bin/false /var/lib/xtreemfs
+    enewuser xtreemfs -1 -1 /var/lib/xtreemfs
     fowners root:xtreemfs /var/log/xtreemfs
     fperms 772 /var/log/xtreemfs
 }
