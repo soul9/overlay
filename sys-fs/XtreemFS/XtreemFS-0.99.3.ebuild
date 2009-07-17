@@ -19,6 +19,9 @@ src_compile() {
 src_install() {
 #    There is no "install" rule in the Makefile :-/
 #    emake DESTDIR="${D}" all || die "Install failed!"
+    insinto  "${W}"/etc/xos/xtreemfs/
+    doins "${S}"/etc/xos/xtreemfs/*
+
     into "${W}"/usr/
     dobin "${S}"/bin/*
     doinitd "${FILESDIR}"/init/xtreemfs-dir
@@ -26,8 +29,6 @@ src_install() {
     doinitd "${FILESDIR}"/init/xtreemfs-osd
     doman "${S}"/man/man1/*
 
-    into  /
-    doins "${S}"/etc/xos
     java-pkg_dojar src/servers/dist/XtreemFS.jar src/servers/lib/BabuDB-0.1.0-RC.jar
 }
 
