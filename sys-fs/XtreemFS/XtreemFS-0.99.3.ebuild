@@ -1,4 +1,4 @@
-inherit toolchain-funcs eutils java-pkg-2 java-ant-2
+inherit toolchain-funcs eutils java-pkg-2
 
 DESCRIPTION="Decentralised distributed filesystem"
 HOMEPAGE="http://xtreemfs.org"
