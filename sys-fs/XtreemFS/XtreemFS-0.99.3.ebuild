@@ -1,4 +1,4 @@
-inherit toolchain-funcs eutils java-pkg-2
+inherit toolchain-funcs eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Decentralised distributed filesystem"
 HOMEPAGE="http://xtreemfs.org"
@@ -11,6 +11,8 @@ DEPEND="${RDEPEND}"
 
 
 src_compile() {
+    export LANG=en_US.utf8
+    export LC_ALL=en_US.utf8
     emake || die "Emake failed!"
 }
 
