@@ -1,4 +1,4 @@
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Decentralised distributed filesystem"
 HOMEPAGE="http://xtreemfs.org"
@@ -6,8 +6,7 @@ SLOT="0"
 SRC_URI="http://xtreemfs.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-RDEPEND="virtual/jdk
-         dev-java/ant"
+RDEPEND="virtual/jdk"
 DEPEND="${RDEPEND}"
 
 
@@ -24,6 +23,8 @@ src_install() {
     doinitd "${FILESDIR}"/init/xtreemfs-mrc
     doinitd "${FILESDIR}"/init/xtreemfs-osd
     doman "${S}"/man/man1/*
+
+    java-pkg_dojar src/servers/dist/XtreemFS.jar src/servers/lib/BabuDB-0.1.0-RC.jar
 }
 
 pkg_preinst() {
