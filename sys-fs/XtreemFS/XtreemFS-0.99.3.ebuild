@@ -6,7 +6,7 @@ SLOT="0"
 SRC_URI="http://xtreemfs.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-RDEPEND="virtual/jdk"
+RDEPEND="virtual/jdk-1.6.0"
 DEPEND="${RDEPEND}"
 
 
