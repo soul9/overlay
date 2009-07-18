@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit flag-o-matic eutils subversion
+inherit flag-o-matic eutils mercurial
 
 DESCRIPTION="OS Inferno New Edition (svn)"
 HOMEPAGE="http://inferno-os.googlecode.com/"
-ESVN_REPO_URI="http://inferno-os.googlecode.com/svn/trunk/"
+EHG_REPO_URI="http://inferno-os.googlecode.com/hg/"
 
 LICENSE="GPL-2"
 SLOT=0
