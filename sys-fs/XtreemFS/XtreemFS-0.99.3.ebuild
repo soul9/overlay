@@ -16,8 +16,7 @@ DEPEND="${RDEPEND}"
 src_compile() {
     export LANG=en_US.utf8
     export LC_ALL=en_US.utf8
-    epatch "${FILESDIR}"/*.patch
-    emake || die "Emake failed!"
+    emake ANT_HOME="" || die "Emake failed!"
 }
 
 src_install() {
