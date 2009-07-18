@@ -5,8 +5,8 @@
          ANT_BIN = /usr/bin/ant
  else
 -        ANT_BIN = $(ANT_HOME)/bin/ant
-+    if [ -e $(ANT_HOME)/bin/ant ]; then \
-+        ANT_BIN = $(ANT_HOME)/bin/ant \
++    @if [ -e $(ANT_HOME)/bin/ant ]; then \
++        ANT_BIN = ${ANT_HOME}/bin/ant \
 +    else \
 +        ANT_BIN = /usr/bin/ant \
 +    fi
