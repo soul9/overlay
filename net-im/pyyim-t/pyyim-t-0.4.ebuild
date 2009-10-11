@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/xmpppy-0.4.1"
 
 src_unpack() {
-	unpack ${A} && cd "${S}" || die "unpack failed"
+	unpack ${A} && cd "${WORKDIR}/yahoo-transport-0.4" || die "unpack failed"
 }
 
 src_install() {
