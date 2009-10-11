@@ -10,7 +10,7 @@ inherit eutils multilib python
 
 DESCRIPTION="Python based jabber transport for Yahoo IM"
 HOMEPAGE="http://xmpppy.sourceforge.net/yahoo/"
-SRC_URI="mirror://sourceforge/xmpppy/yahoo-transport-${PV}.tar.gz"
+SRC_URI="mirror://sourceforge/xmpppy/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/xmpppy-0.4.1"
 
 src_unpack() {
-	unpack ${A} && cd "${WORKDIR}/yahoo-transport-0.4" || die "unpack failed"
+	unpack ${A} && cd "${S}" || die "unpack failed"
 }
 
 src_install() {
