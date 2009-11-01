@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gloox/gloox-1.0_beta4.ebuild,v 1.1 2009/01/31 21:33:45 jokey Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gloox/gloox-1.0.ebuild,v 1.1 2009/11/01 21:33:45 jokey Exp $
 
 EAPI=2
 

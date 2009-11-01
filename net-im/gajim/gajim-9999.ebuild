@@ -19,6 +19,7 @@ DEPEND="|| (
 		>=dev-lang/python-2.5[sqlite]
 		( <dev-lang/python-2.5 dev-python/pysqlite )
 	)
+	dev-python/libasyncns-python
 	dev-python/pygtk
 	sys-devel/gettext
 	dev-util/intltool
