@@ -14,13 +14,13 @@ EGIT_PROJECT="spectrum"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="tools"
+IUSE="extras"
 
 DEPEND=">=dev-libs/poco-1.3.3
                     >=net-im/pidgin-2.6.0
                      sys-devel/gettext
                      >net-libs/gloox-1.0_beta7
-                     tools? (
+                     extras? (
                          dev-python/twisted
                          dev-python/twisted-words
                      )"
@@ -33,8 +33,8 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
-    if use tools; then
-        cp tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl && chmod ug+x ${D}/usr/bin/spectrumctl
+    cp tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl && chmod ug+x ${D}/usr/bin/spectrumctl
+    if use extras; then
         cp tools/stats/stats.py ${D}/usr/bin/spectrumstats && chmod ug+x ${D}/usr/bin/spectrumstats
     fi
 }
