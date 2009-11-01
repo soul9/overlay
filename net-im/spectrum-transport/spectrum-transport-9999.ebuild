@@ -19,7 +19,7 @@ IUSE="extras"
 DEPEND=">=dev-libs/poco-1.3.3
                     >=net-im/pidgin-2.6.0
                      sys-devel/gettext
-                     >net-libs/gloox-1.0_beta7
+                     >net-libs/gloox-1.0
                      extras? (
                          dev-python/twisted
                          dev-python/twisted-words
