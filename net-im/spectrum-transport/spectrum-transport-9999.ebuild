@@ -40,21 +40,21 @@ src_install () {
     fi
 #install init scripts and configs
     if use msn; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.cfg > ${W}/spectrum-msn.cfg
+        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${F}/spectrum.cfg > ${W}/spectrum-msn.cfg
         newins ${W}/spectrum-msn.cfg /etc/spectrum/spectrum-msn.cfg
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.init > ${W}/spectrum-msn
+        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${F}/spectrum.init > ${W}/spectrum-msn
         doinitd ${W}/spectrum-msn
     fi
     if use yahoo; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.cfg > ${W}/spectrum-yahoo.cfg
+        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${F}/spectrum.cfg > ${W}/spectrum-yahoo.cfg
         newins ${W}/spectrum-yahoo.cfg /etc/spectrum/spectrum-yahoo.cfg
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.init > ${W}/spectrum-yahoo
+        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${F}/spectrum.init > ${W}/spectrum-yahoo
         doinitd ${W}/spectrum-yahoo
     fi
     if use facebook; then
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.cfg > ${W}/spectrum-facebook.cfg
+         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${F}/spectrum.cfg > ${W}/spectrum-facebook.cfg
          newins ${W}/spectrum-facebook.cfg /etc/spectrum/spectrum-facebook.cfg
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.init > ${W}/spectrum-facebook
+         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${F}/spectrum.init > ${W}/spectrum-facebook
          doinitd ${W}/spectrum-facebook
     fi
 }
