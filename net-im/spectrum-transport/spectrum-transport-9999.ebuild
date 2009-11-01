@@ -34,35 +34,19 @@ src_unpack () {
 src_install () {
     cmake-utils_src_install
     exeinto /usr/bin
-    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || exit 1
+    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || die
 #install stats
     if use extras; then
-        newexe ${WORKDIR}/${P}/tools/stats/stats.py spectrumstats || exit 1
+        newexe ${WORKDIR}/${P}/tools/stats/stats.py spectrumstats || die
     fi
 #install init scripts and configs
-    if use msn; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-msn.cfg
+    for protocol in msn yahoo facebook icq myspace gg aim  simple irc; do
+        sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-${protocol}.cfg
         insinto /etc/spectrum
-        newins ${WORKDIR}/spectrum-msn.cfg spectrum-msn.cfg || exit 1
+        doins ${WORKDIR}/spectrum-${protocol}.cfg || die
 
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-msn
-        doinitd ${WORKDIR}/spectrum-msn || exit 1
-    fi
-    if use yahoo; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-yahoo.cfg
-        insinto /etc/spectrum
-        newins ${WORKDIR}/spectrum-yahoo.cfg spectrum-yahoo.cfg || exit 1
-
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-yahoo
-        doinitd ${WORKDIR}/spectrum-yahoo || exit 1
-    fi
-    if use facebook; then
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-facebook.cfg
-         insinto /etc/spectrum
-         newins ${WORKDIR}/spectrum-facebook.cfg spectrum-facebook.cfg || exit 1
-
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-facebook
-         doinitd ${WORKDIR}/spectrum-facebook || exit 1
-    fi
+        sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-${protocol}
+        doinitd ${WORKDIR}/spectrum-${protocol} || die
+    done
 }
 
