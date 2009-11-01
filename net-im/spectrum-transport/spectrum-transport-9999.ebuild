@@ -21,3 +21,8 @@ DEPEND=">=dev-libs/poco-1.3.3
                      sys-devel/gettext
                      >net-libs/gloox-1.0_beta7"
 RDEPEND="${DEPEND}"
+
+src_configure() {
+    cmake .
+    cmake-utils_src_configure
+}
