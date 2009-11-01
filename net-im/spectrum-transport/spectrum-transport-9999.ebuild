@@ -33,28 +33,28 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
-    newexe ${W}tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl
+    newexe ${WORKDIR}/tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl
 #install stats
     if use extras; then
-        newexe ${W}tools/stats/stats.py ${D}/usr/bin/spectrumstats
+        newexe ${WORKDIR}/tools/stats/stats.py ${D}/usr/bin/spectrumstats
     fi
 #install init scripts and configs
     if use msn; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${F}/spectrum.cfg > ${W}/spectrum-msn.cfg
-        newins ${W}/spectrum-msn.cfg /etc/spectrum/spectrum-msn.cfg
-        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${F}/spectrum.init > ${W}/spectrum-msn
-        doinitd ${W}/spectrum-msn
+        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-msn.cfg
+        newins ${WORKDIR}/spectrum-msn.cfg ${D}/etc/spectrum/spectrum-msn.cfg
+        sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-msn
+        doinitd ${WORKDIR}/spectrum-msn
     fi
     if use yahoo; then
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${F}/spectrum.cfg > ${W}/spectrum-yahoo.cfg
-        newins ${W}/spectrum-yahoo.cfg /etc/spectrum/spectrum-yahoo.cfg
-        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${F}/spectrum.init > ${W}/spectrum-yahoo
-        doinitd ${W}/spectrum-yahoo
+        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-yahoo.cfg
+        newins ${WORKDIR}/spectrum-yahoo.cfg ${D}/etc/spectrum/spectrum-yahoo.cfg
+        sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-yahoo
+        doinitd ${WORKDIR}/spectrum-yahoo
     fi
     if use facebook; then
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${F}/spectrum.cfg > ${W}/spectrum-facebook.cfg
-         newins ${W}/spectrum-facebook.cfg /etc/spectrum/spectrum-facebook.cfg
-         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${F}/spectrum.init > ${W}/spectrum-facebook
-         doinitd ${W}/spectrum-facebook
+         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-facebook.cfg
+         newins ${WORKDIR}/spectrum-facebook.cfg ${D}/etc/spectrum/spectrum-facebook.cfg
+         sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-facebook
+         doinitd ${WORKDIR}/spectrum-facebook
     fi
 }
