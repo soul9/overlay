@@ -33,6 +33,7 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
+    exeinto /usr/bin
     newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || die
 #install stats
     if use extras; then
