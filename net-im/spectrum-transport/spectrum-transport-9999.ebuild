@@ -33,10 +33,10 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
-    newexe ${WORKDIR}/tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl
+    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl
 #install stats
     if use extras; then
-        newexe ${WORKDIR}/tools/stats/stats.py ${D}/usr/bin/spectrumstats
+        newexe ${WORKDIR}/${P}/tools/stats/stats.py ${D}/usr/bin/spectrumstats
     fi
 #install init scripts and configs
     if use msn; then
