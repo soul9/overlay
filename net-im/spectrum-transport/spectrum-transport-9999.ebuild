@@ -33,28 +33,36 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
-    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl
+    exeinto /usr/bin
+    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || exit 1
 #install stats
     if use extras; then
-        newexe ${WORKDIR}/${P}/tools/stats/stats.py ${D}/usr/bin/spectrumstats
+        newexe ${WORKDIR}/${P}/tools/stats/stats.py spectrumstats || exit 1
     fi
 #install init scripts and configs
     if use msn; then
         sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-msn.cfg
-        newins ${WORKDIR}/spectrum-msn.cfg ${D}/etc/spectrum/spectrum-msn.cfg
+        insinto /etc/spectrum
+        newins ${WORKDIR}/spectrum-msn.cfg spectrum-msn.cfg || exit 1
+
         sed -e 's,SPECTRUMGEN2PROTOCOL,msn,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-msn
-        doinitd ${WORKDIR}/spectrum-msn
+        doinitd ${WORKDIR}/spectrum-msn || exit 1
     fi
     if use yahoo; then
         sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-yahoo.cfg
-        newins ${WORKDIR}/spectrum-yahoo.cfg ${D}/etc/spectrum/spectrum-yahoo.cfg
+        insinto /etc/spectrum
+        newins ${WORKDIR}/spectrum-yahoo.cfg spectrum-yahoo.cfg || exit 1
+
         sed -e 's,SPECTRUMGEN2PROTOCOL,yahoo,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-yahoo
-        doinitd ${WORKDIR}/spectrum-yahoo
+        doinitd ${WORKDIR}/spectrum-yahoo || exit 1
     fi
     if use facebook; then
          sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-facebook.cfg
-         newins ${WORKDIR}/spectrum-facebook.cfg ${D}/etc/spectrum/spectrum-facebook.cfg
+         insinto /etc/spectrum
+         newins ${WORKDIR}/spectrum-facebook.cfg spectrum-facebook.cfg || exit 1
+
          sed 's,SPECTRUMGEN2PROTOCOL,facebook,g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-facebook
-         doinitd ${WORKDIR}/spectrum-facebook
+         doinitd ${WORKDIR}/spectrum-facebook || exit 1
     fi
 }
+
