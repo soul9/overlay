@@ -33,8 +33,8 @@ src_unpack () {
 
 src_install () {
     cmake-utils_src_install
-    cp tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl && chmod ug+x ${D}/usr/bin/spectrumctl
+    cp tools/spectrumctl/spectrumctl.py ${D}/usr/bin/spectrumctl && chmod ug+x ${D}/usr/bin/spectrumctl && chgrp jabber ${D}/usr/bin/spectrumctl
     if use extras; then
-        cp tools/stats/stats.py ${D}/usr/bin/spectrumstats && chmod ug+x ${D}/usr/bin/spectrumstats
+        cp tools/stats/stats.py ${D}/usr/bin/spectrumstats && chmod ug+x ${D}/usr/bin/spectrumstats && chgrp jabber ${D}/usr/bin/spectrumstats
     fi
 }
