@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git make-utils
+inherit git cmake-utils
 
 DESCRIPTION="a new xmpp transport based on libpurple"
 HOMEPAGE="http://spectrum.im"
