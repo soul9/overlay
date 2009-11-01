@@ -14,7 +14,7 @@ EGIT_PROJECT="spectrum"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="extras msn yahoo facebook"
+IUSE="extras"
 
 
 RDEPEND=">=dev-libs/poco-1.3.3
