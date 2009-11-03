@@ -14,8 +14,6 @@ EGIT_PROJECT="spectrum"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="extras"
-
 
 RDEPEND=">=dev-libs/poco-1.3.3
                   >=net-im/pidgin-2.6.0
@@ -35,10 +33,6 @@ src_install () {
     cmake-utils_src_install
     exeinto /usr/bin
     newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || die
-#install stats
-    if use extras; then
-        newexe ${WORKDIR}/${P}/tools/stats/stats.py spectrumstats || die
-    fi
 #install init scripts and configs
     for protocol in msn yahoo facebook icq myspace gg aim  simple irc; do
         sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-${protocol}.cfg
