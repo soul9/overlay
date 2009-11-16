@@ -37,7 +37,10 @@ RDEPEND="gnome? ( dev-python/gnome-python-extras
 	avahi? ( net-dns/avahi[dbus,gtk,python] )
 	dev-python/pyopenssl
 	dev-python/sexy-python
-	dev-python/pycrypto"
+	dev-python/pycrypto
+         net-libs/farsight2[python]
+         dev-python/libgnomecanvas-python
+         dev-python/libgnome-python"
 
 pkg_setup() {
 	if ! use dbus; then
