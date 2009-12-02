@@ -25,7 +25,7 @@ src_unpack() {
 
     sed -i \
            -e "/^PREFIX/s|=.*|= /usr|" \
-           -e "/^ETC/s|=.*|= /etc|" \
+           -e "/^ ETC/s|=.*|= /etc|" \
            -e "/^CFLAGS/s|=|+=|" \
            -e "/^LDFLAGS/s|=|+=|" \
            config.mk || die "sed failed"
