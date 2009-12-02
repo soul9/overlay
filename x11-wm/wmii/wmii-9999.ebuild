@@ -30,16 +30,11 @@ src_unpack() {
 
 	cd "${S}"
 
-	sed -i -e "s/dmenu -b/dmenu/" \
-		rc/{rc.wmii.rc,sh.wmii,wmiirc.sh} || die "sed failed"
-
 	sed -i \
 		-e "/^PREFIX/s|=.*|= /usr|" \
 		-e "/^  ETC/s|=.*|= /etc|" \
 		-e "/^  LIBDIR/s|=.*|= /usr/$(get_libdir)|" \
 		config.mk || die "sed failed"
-#		-e "/^LIBIXP/s|=.*|= /usr/lib/libixp.a|" \
-
 }
 
 src_compile() {
