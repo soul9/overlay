@@ -17,21 +17,6 @@ IUSE=""
 
 S="${WORKDIR}/libixp"
 
-src_unpack() {
-	# download and copy files
-	mercurial_src_unpack
-
-	cd "${S}"
-
-    sed -i \
-           -e "/^PREFIX/s|=.*|= ${D}/usr|" \
-           -e "/^ETC/s|=.*|= ${D}/etc|" \
-           -e "/^CFLAGS/s|=|+=|" \
-           -e "/^LDFLAGS/s|=|+=|" \
-           config.mk || die "sed failed"
-
-}
-
 src_compile() {
         emake -j1 || die "emake failed"
 }
