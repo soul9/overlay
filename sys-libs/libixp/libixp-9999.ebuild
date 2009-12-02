@@ -22,5 +22,5 @@ src_compile() {
 }
 
 src_install() {
-        emake -j1 DESTDIR="${D}" install || die "emake install failed"
+        PREFIX=/usr emake -j1 DESTDIR="${D}" install || die "emake install failed"
 }
