@@ -13,7 +13,7 @@ EHG_REPO_URI="http://hg.gajim.org/gajim"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml"
+IUSE="avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml jingle"
 
 DEPEND="|| (
 		>=dev-lang/python-2.5[sqlite]
