@@ -35,6 +35,7 @@ RDEPEND="gnome? ( dev-python/gnome-python-extras
 	idle? ( x11-libs/libXScrnSaver )
 	spell? ( app-text/gtkspell )
 	avahi? ( net-dns/avahi[dbus,gtk,python] )
+         jingle? ( net-libs/farsight2[python] )
 	dev-python/pyopenssl
 	dev-python/sexy-python
 	dev-python/pycrypto
