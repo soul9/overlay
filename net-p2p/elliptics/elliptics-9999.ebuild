@@ -49,4 +49,5 @@ src_compile() {
 src_install() {
     emake DESTDIR="${D}" install || die "install failed"
     dodoc example/EXAMPLE example/00-INDEX doc/design_notes.txt doc/io_storage_backend.txt
+    use fcgi && dodoc example/fcgi/http://demo.openwebreader.org
 }
