@@ -21,7 +21,7 @@ IUSE="bdb tokyocabinet fcgi perl libatomic"
 
 RDEPEND="bdb? ( sys-libs/db )
                     tokyocabinet? ( dev-db/tokyocabinet )
-                    fcgi? ( dev-libs/fcgi)
+                    fcgi? ( dev-libs/fcgi )
                     perl? ( dev-perl/dnet-perl )
                     libatomic? ( dev-libs/libatomic )"
 #libatomic from ioremap projects
