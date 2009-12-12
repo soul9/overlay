@@ -32,7 +32,7 @@ src_unpack () {
 src_install () {
     cmake-utils_src_install
     exeinto /usr/bin
-    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl.py spectrumctl || die
+    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl spectrumctl || die
 #install init scripts and configs
     for protocol in msn yahoo facebook icq myspace gg aim  simple irc; do
         sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-${protocol}.cfg
