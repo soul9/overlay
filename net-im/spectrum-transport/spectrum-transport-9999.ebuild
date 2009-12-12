@@ -1,46 +1,44 @@
 # Copyright 1999-2009 soul9.org
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# Distributed under the terms of the WTFPL
 
-inherit git cmake-utils
+inherit cmake-utils git
 
-DESCRIPTION="a new xmpp transport based on libpurple"
+DESCRIPTION="A new xmpp transport based on libpurple"
 HOMEPAGE="http://spectrum.im"
 
-EGIT_REPO_URI="git://github.com/hanzz/spectrum.git"
+EGIT_REPO_URI="git://github.com/hanzz/${PN}.git"
 EGIT_TREE="master"
 EGIT_PROJECT="spectrum"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86 "
+IUSE="python"
 
-RDEPEND=">=dev-libs/poco-1.3.3
-                  >=net-im/pidgin-2.6.0
-                  >=net-libs/gloox-1.0
-                  extras? (
-                      dev-python/twisted
-                      dev-python/twisted-words
-                  )"
+RDEPEND="dev-libs/poco
+	>=net-im/pidgin-2.6.0
+	>=net-libs/gloox-1.0
+	extras? (
+		dev-lang/python
+		dev-python/twisted
+		dev-python/twisted-words
+	)"
 DEPEND="${RDEPEND}
-                  sys-devel/gettext"
-
-src_unpack () {
-    git_src_unpack
-}
+	sys-devel/gettext"
 
 src_install () {
-    cmake-utils_src_install
-    exeinto /usr/bin
-    newexe ${WORKDIR}/${P}/tools/spectrumctl/spectrumctl spectrumctl || die
+	cmake-utils_src_install
+	if use python; then
+		doexe "${WORKDIR}/${P}/tools/spectrumctl/spectrumctl" || die
+	fi
+
 #install init scripts and configs
-    for protocol in msn yahoo facebook icq myspace gg aim  simple irc; do
-        sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.cfg > ${WORKDIR}/spectrum-${protocol}.cfg
-        insinto /etc/spectrum
-        doins ${WORKDIR}/spectrum-${protocol}.cfg || die
+	insinto /etc/spectrum
+	for protocol in msn yahoo facebook icq myspace gg aim simple irc; do
+		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.cfg" > "${WORKDIR}/spectrum-${protocol}.cfg"
+		doins "${WORKDIR}/spectrum-${protocol}.cfg" || die
 
-        sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' ${FILESDIR}/spectrum.init > ${WORKDIR}/spectrum-${protocol}
-        doinitd ${WORKDIR}/spectrum-${protocol} || die
-    done
+		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.init" > "${WORKDIR}/spectrum-${protocol}"
+		doinitd "${WORKDIR}/spectrum-${protocol}" || die
+	done
 }
-
