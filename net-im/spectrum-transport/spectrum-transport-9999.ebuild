@@ -6,9 +6,9 @@ inherit cmake-utils git
 DESCRIPTION="A new xmpp transport based on libpurple"
 HOMEPAGE="http://spectrum.im"
 
-EGIT_REPO_URI="git://github.com/hanzz/${PN}.git"
-EGIT_TREE="master"
 EGIT_PROJECT="spectrum"
+EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
+EGIT_TREE="master"
 
 LICENSE="GPL-2"
 SLOT="0"
