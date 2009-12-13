@@ -18,7 +18,7 @@ IUSE="python"
 RDEPEND="dev-libs/poco
 	>=net-im/pidgin-2.6.0
 	>=net-libs/gloox-1.0
-	extras? (
+	python? (
 		dev-lang/python
 		dev-python/twisted
 		dev-python/twisted-words
@@ -29,16 +29,16 @@ DEPEND="${RDEPEND}
 src_install () {
 	cmake-utils_src_install
 	if use python; then
-		doexe "${WORKDIR}/${P}/tools/spectrumctl/spectrumctl" || die
+		dobin "${WORKDIR}/${P}/tools/spectrumctl/spectrumctl" || die
 	fi
 
-#install init scripts and configs
+	#install init scripts and configs
 	insinto /etc/spectrum
 	for protocol in msn yahoo facebook icq myspace gg aim simple irc; do
-		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.cfg" > "${WORKDIR}/spectrum-${protocol}.cfg"
+		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.cfg" > "${WORKDIR}/spectrum-${protocol}.cfg" || die
 		doins "${WORKDIR}/spectrum-${protocol}.cfg" || die
 
-		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.init" > "${WORKDIR}/spectrum-${protocol}"
+		sed -e 's,SPECTRUMGEN2PROTOCOL,'${protocol}',g' "${FILESDIR}/spectrum.init" > "${WORKDIR}/spectrum-${protocol}" || die
 		doinitd "${WORKDIR}/spectrum-${protocol}" || die
 	done
 }
