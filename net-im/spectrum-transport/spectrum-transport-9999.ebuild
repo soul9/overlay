@@ -13,24 +13,15 @@ EGIT_TREE="master"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 "
-IUSE="python"
 
 RDEPEND="dev-libs/poco
 	>=net-im/pidgin-2.6.0
-	>=net-libs/gloox-1.0
-	python? (
-		dev-lang/python
-		dev-python/twisted
-		dev-python/twisted-words
-	)"
+	>=net-libs/gloox-1.0"
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_install () {
 	cmake-utils_src_install
-	if use python; then
-		dobin "${WORKDIR}/${P}/tools/spectrumctl/spectrumctl" || die
-	fi
 
 	#install init scripts and configs
 	insinto /etc/spectrum
