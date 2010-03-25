@@ -8,7 +8,7 @@ HOMEPAGE="http://spectrum.im"
 
 EGIT_PROJECT="spectrum"
 EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
-EGIT_TREE="master"
+EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
