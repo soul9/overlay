@@ -25,12 +25,15 @@ RDEPEND="dev-libs/poco
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
+S=${WORKDIR}/spectrum-${PV}
+
 src_prepare() {
-	mv spectrum-${PV} spectrum-transport-${PV}
 	if ! use ping; then
 		sed -e "s/'purple_timeout_add_seconds(60, &sendPing, this);',/'',/" \
-			-i "spectrum-transport-${PV}/src/main.cpp" \
+			-i "${S}/src/main.cpp" \
 			|| die "Cannot remove ping"
+		grep -q 'purple_timeout_add_seconds(60, &sendPing, this);' ${S}/src/main.cpp \
+			&& die "Cannot remove ping"
 	fi
 }
 
