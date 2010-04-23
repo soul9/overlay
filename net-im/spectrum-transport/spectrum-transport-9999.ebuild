@@ -19,7 +19,7 @@ PURPLE_PROTOCOLS="msn yahoo facebook icq myspace gg aim simple irc"
 IUSE="${PURPLE_PROTOCOLS} mysql sqlite ping"
 
 RDEPEND="dev-libs/poco
-	>=net-im/pidgin-2.6.0[msn?,yahoo?,facebook?,icq?,myspace?,gg?,aim?,simple?,irc?]
+	( >=net-im/pidgin-2.6.0[msn?,yahoo?,facebook?,icq?,myspace?,gg?,aim?,simple?,irc?] )
 	>=net-libs/gloox-1.0"
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
