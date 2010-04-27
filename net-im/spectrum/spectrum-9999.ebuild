@@ -7,7 +7,7 @@ inherit cmake-utils git
 DESCRIPTION="A new xmpp transport based on libpurple"
 HOMEPAGE="http://spectrum.im"
 
-EGIT_PROJECT="spectrum"
+EGIT_PROJECT="${PN}"
 EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
 EGIT_BRANCH="master"
 
@@ -25,14 +25,15 @@ RDEPEND="dev-libs/poco
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
-S=${WORKDIR}/spectrum-${PV}
+S=${WORKDIR}/${PN}-${PV}
 
 src_prepare() {
+#sed won't tell us if the pfails, make a patch please
 	if ! use ping; then
 		sed -e "s/'purple_timeout_add_seconds(60, &sendPing, this);',/'',/" \
 			-i "${S}/src/main.cpp" \
 			|| die "Cannot remove ping"
-		grep -q 'purple_timeout_add_seconds(60, &sendPing, this);' ${S}/src/main.cpp \
+		grep -q 'purple_timeout_add_seconds(60, &sendPing, this);' "${S}/src/main.cpp" \
 			&& die "Cannot remove ping"
 	fi
 }
