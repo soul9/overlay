@@ -17,26 +17,13 @@ KEYWORDS="~amd64 ~x86 "
 
 PURPLE_PROTOCOLS="qq"
 
-IUSE="msn yahoo facebook icq myspace gg aim simple irc ${PURPLE_PROTOCOLS} mysql sqlite ping"
+IUSE="msn yahoo facebook icq myspace gg aim simple irc ${PURPLE_PROTOCOLS} mysql sqlite"
 
 RDEPEND="dev-libs/poco
 	>=net-im/pidgin-2.6.0[qq?]
 	>=net-libs/gloox-1.0"
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
-
-S=${WORKDIR}/${PN}-${PV}
-
-src_prepare() {
-#sed won't tell us if the pfails, make a patch please
-	if ! use ping; then
-		sed -e "s/'purple_timeout_add_seconds(60, &sendPing, this);',/'',/" \
-			-i "${S}/src/main.cpp" \
-			|| die "Cannot remove ping"
-		grep -q 'purple_timeout_add_seconds(60, &sendPing, this);' "${S}/src/main.cpp" \
-			&& die "Cannot remove ping"
-	fi
-}
 
 src_install () {
 	cmake-utils_src_install
