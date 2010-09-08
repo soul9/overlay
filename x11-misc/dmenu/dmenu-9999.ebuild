@@ -16,7 +16,8 @@ KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="xinerama"
 
 DEPEND="x11-libs/libX11
-	xinerama? ( x11-libs/libXinerama )"
+                  xinerama? ( x11-libs/libXinerama )
+                  x11-libs/libdraw"
 RDEPEND=${DEPEND}
 
 S="${WORKDIR}/dmenu"
