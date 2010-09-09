@@ -10,6 +10,7 @@ EHG_REPO_URI="http://hg.suckless.org/libdraw/"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="x11-libs/libX11"
