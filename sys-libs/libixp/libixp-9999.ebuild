@@ -13,8 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
+DEPEND="app-text/txt2tags"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/libixp"
 
