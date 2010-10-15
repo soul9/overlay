@@ -59,7 +59,6 @@ pkg_setup() {
 src_prepare() {
     #why do we have to do this?
     cd gajim
-    ./autogen.sh
 #	eautoreconf
 }
 
@@ -90,9 +89,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize $(python_get_sitedir)/gajim/
+	python_mod_optimize /usr/share/gajim/src/
+	python_mod_optimize /usr/share/gajim/plugins/
 }
 
 pkg_postrm() {
-	python_mod_cleanup $(python_get_sitedir)/gajim/
+	python_mod_cleanup /usr/share/gajim/src/
+	python_mod_cleanup /usr/share/gajim/plugins/
 }
