@@ -4,13 +4,13 @@
 
 EAPI=3
 
-inherit linux-info xorg-2 git
+inherit linux-info git xorg-2
 
 DESCRIPTION="Driver for Synaptics touchpads"
 HOMEPAGE="http://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
 
 EGIT_PROJECT="${PN}"
-EGIT_REPO_URI="git://git://anongit.freedesktop.org/git/xorg/driver/${EGIT_PROJECT}.git"
+EGIT_REPO_URI="git://anongit.freedesktop.org/git/xorg/driver/${EGIT_PROJECT}"
 EGIT_BRANCH="master"
 
 
@@ -24,6 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-proto/inputproto
 	>=x11-proto/recordproto-1.14"
+
 
 src_install() {
 	DOCS="README" xorg-2_src_install
