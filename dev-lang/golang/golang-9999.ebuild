@@ -76,8 +76,10 @@ src_install() {
 #		insinto idontknow
 #		doins "misc/kate/go.xml"
 #	fi
+	NCPU="$(grep '^processor' /proc/cpuinfo |wc -l)"
+	MYDOSED="s,GENTOOARCH,${GOARCH},g; s,GENTOO_GOROOT,${GOROOT_FINAL},g; s,NCPU,${NCPU},g"
+	sed "${MYDOSED}" "${FILESDIR}/golang-env" > "${T}/99golang" || die "Couldn't make the environment file"
 
-	sed "s,GENTOOARCH,${GOARCH},g; s,GENTOO_GOROOT,${GOROOT_FINAL},g" "${FILESDIR}/golang-env" > "${T}/99golang" || die "Couldn't make the environment file"
 	doenvd "${T}/99golang" || die "Couldn't install the environment file"
 }
 
