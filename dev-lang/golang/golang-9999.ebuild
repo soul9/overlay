@@ -29,11 +29,11 @@ S="${WORKDIR}/hg"
 src_compile() {
 	export GOROOT="$(pwd)"
 	if use x86; then
-	    export GOARCH=386
-    elif use amd64; then
-        export GOARCH=amd64
-    fi
-    export GOBIN=$GOROOT/bin
+		export GOARCH=386
+	elif use amd64; then
+		export GOARCH=amd64
+	fi
+	export GOBIN=$GOROOT/bin
 	if use emacs; then
 		elisp-compile misc/emacs/*.el
 	fi
@@ -45,11 +45,11 @@ src_compile() {
 src_install() {
 	export GOROOT="$(pwd)"
 	if use x86; then
-	    export GOARCH=386
-    elif use amd64; then
-        export GOARCH=amd64
-    fi
-    export GOBIN=$GOROOT/bin
+		export GOARCH=386
+	elif use amd64; then
+		export GOARCH=amd64
+	fi
+	export GOBIN=$GOROOT/bin
 
 	dodir "${GOROOT_FINAL}"
 	find -type f ! -executable -print0 | xargs -0 -I {} install -Dm644 {} "${D}/${GOROOT_FINAL}/{}"
@@ -82,8 +82,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	elisp-site-regen
+	if use emacs; then
+		elisp-site-regen
+	fi
 }
 pkg_postrm() {
-	elisp-site-regen
+	if use emacs; then
+		elisp-site-regen
+	fi
 }
