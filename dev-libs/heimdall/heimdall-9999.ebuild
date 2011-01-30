@@ -64,5 +64,5 @@ src_install() {
 }
 
 pkg_postinst() {
-    /etc/init.d/udev restart
+    udevadm control --reload-rules && udevadm trigger --subsystem-match=usb
 }
