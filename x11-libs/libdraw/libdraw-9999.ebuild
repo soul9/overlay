@@ -6,7 +6,7 @@ inherit eutils multilib toolchain-funcs mercurial
 
 DESCRIPTION="X11 draw library"
 HOMEPAGE="http://tools.suckless.org/"
-EHG_REPO_URI="http://hg.suckless.org/libdraw/"
+EHG_REPO_URI="http://hg.suckless.org/libdraw.old/"
 
 LICENSE="MIT"
 SLOT="0"
